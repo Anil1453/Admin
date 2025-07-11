@@ -1,0 +1,197 @@
+/* Arka plan için gövde */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-size: cover;
+  position: relative;
+  height: 100vh;
+  overflow: auto;
+}
+#bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+  pointer-events: none;
+}
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: #4facfe;
+  color: white;
+  font-size: 20px;
+  border-radius: 50%;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.back-button:hover {
+  background-color: #3a9de2;
+}
+
+/* Blur efekti için body'nin önüne yarı saydam katman */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: inherit;
+  filter: blur(8px);
+  z-index: -1;
+}
+
+/* İçerik kutusu */
+.container {
+  max-width: 800px;
+  margin: 50px auto;
+  background-color: rgba(255, 255, 255, 0.85); /* yarı saydam beyaz */
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 1;
+  backdrop-filter: saturate(180%) blur(10px);
+  -webkit-backdrop-filter: saturate(180%) blur(10px);
+  color: #333;
+}
+
+/* Başlık */
+h2 {
+  font-size: 28px;
+  margin-bottom: 25px;
+}
+
+/* Filtreler */
+.ticket-filters {
+  margin-bottom: 20px;
+  font-size: 15px;
+}
+
+.ticket-filters select {
+  padding: 6px 12px;
+  font-size: 15px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin-left: 10px;
+}
+
+/* Destek talepleri */
+.tickets {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.ticket {
+  padding: 20px;
+  border-left: 6px solid #ccc;
+  background-color: #f9fafb;
+  border-radius: 8px;
+  transition: background 0.3s;
+}
+
+.ticket h3 {
+  margin: 0 0 10px;
+  font-size: 18px;
+}
+
+.ticket p {
+  margin: 4px 0;
+  font-size: 14px;
+}
+
+.ticket .status {
+  font-size: 13px;
+  color: #666;
+  margin-top: 8px;
+  display: inline-block;
+}
+
+.open {
+  border-left-color: #f59e0b;
+}
+
+.in-progress {
+  border-left-color: #3b82f6;
+}
+
+.resolved {
+  border-left-color: #10b981;
+}
+
+/* Alt kısım */
+.bottom-buttons {
+  margin-top: 30px;
+  text-align: left;
+}
+
+/* DARK MODE */
+body.dark-mode {
+  background: linear-gradient(to left, #1c1c1c, #121212);
+  color: #e0e0e0;
+}
+
+body.dark-mode .container {
+  background-color: rgba(30, 30, 30, 0.9);
+  color: #e0e0e0;
+}
+
+body.dark-mode h2 {
+  color: #ffffff;
+}
+
+body.dark-mode .ticket {
+  background-color: #2f2f2f;
+  border-left-color: #555; /* nötr renk, status'la override edilir */
+  color: #e0e0e0;
+}
+
+body.dark-mode .ticket .status {
+  color: #b0b0b0;
+}
+
+body.dark-mode .open {
+  border-left-color: #facc15; /* amber-400 */
+}
+
+body.dark-mode .in-progress {
+  border-left-color: #60a5fa; /* blue-400 */
+}
+
+body.dark-mode .resolved {
+  border-left-color: #34d399; /* green-400 */
+}
+
+body.dark-mode .log-entry {
+  background-color: #2b2b2b;
+  border: 1px solid #444;
+  color: #e0e0e0;
+}
+
+body.dark-mode .timestamp {
+  color: #bbbbbb;
+}
+
+body.dark-mode select {
+  background-color: #2a2a2a;
+  color: #f0f0f0;
+  border: 1px solid #666;
+}
+
+body.dark-mode .back-link {
+  color: #7dd3fc; /* sky-300 */
+}
+body.dark-mode .back-button {
+  background-color: #2563eb;
+  color: #f0f0f0;
+}
+
+body.dark-mode .back-button:hover {
+  background-color: #1e40af;
+}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Notifications</title>
+  <link rel="stylesheet" href="notifications.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+   <video autoplay muted loop playsinline id="bg-video">
+  <source id="bg-source" src="whitebackground.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+  <div class="container">
+    <h2>🔔 Notifications Center</h2>
+
+    <div class="notification-settings">
+      <h3>Notification Preferences</h3>
+      <label><input type="checkbox" id="email-alerts" checked> Email Alerts</label>
+      <label><input type="checkbox" id="push-notifs"> Push Notifications</label>
+      <label><input type="checkbox" id="system-announcements" checked> System Announcements</label>
+    </div>
+
+    <div class="notification-list">
+      <h3>Recent Notifications</h3>
+      <ul id="notif-list">
+        <!-- Bildirimler JavaScript ile yüklenecek -->
+      </ul>
+    </div>
+
+    <div class="bottom-buttons">
+      <button class="clear-btn" id="clear-notifications">Clear All</button>
+<a href="admin.html" class="back-button" title="Back">
+  ←
+</a>
+
+    </div>
+  </div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    if (savedTheme === 'dark') {
+      document.body.classList.add('dark-mode');
+    } else {
+      document.body.classList.remove('dark-mode');
+    }
+  });
+</script>
+   <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    const bgSource = document.getElementById('bg-source');
+
+    if (savedTheme === 'dark') {
+      document.body.classList.add('dark-mode');
+      bgSource.src = 'blackbackground.mp4';
+    } else {
+      document.body.classList.remove('dark-mode');
+      bgSource.src = 'whitebackground.mp4';
+    }
+
+    // Kaynağı değiştirdikten sonra yeniden yükle
+    const bgVideo = document.getElementById('bg-video');
+    bgVideo.load();
+  });
+</script>
+  <script src="notifications.js"></script>
+</body>
+</html>

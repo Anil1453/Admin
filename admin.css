@@ -1,0 +1,119 @@
+/* admin-style.css */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+}
+#bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.admin-panel {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  max-width: 1000px;
+  width: 100%;
+  /* margin kaldırıyoruz çünkü body ortaladı */
+}
+
+
+.admin-panel h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.admin-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.card-button {
+  padding: 20px;
+  background-color: #f5f9ff;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.3s ease;
+  text-align: left;
+  color: inherit;
+  text-decoration: none;
+  display: block;
+}
+
+.card-button:hover {
+  transform: translateY(-2px);
+  background-color: #e3f0ff;
+}
+
+.card-button h3 {
+  margin-bottom: 10px;
+  color: #4facfe;
+  font-size: 18px;
+}
+
+.card-button p {
+  font-size: 14px;
+  color: #555;
+}
+
+.logout {
+  display: inline-block;
+  margin-top: 20px;
+  color: #4facfe;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.logout:hover {
+  text-decoration: underline;
+}
+
+/* DARK MODE for Admin */
+body.dark-mode {
+  background: linear-gradient(to left, #1c1c1c, #121212);
+  color: #eee;
+}
+body.dark-mode .admin-panel h2 {
+  color: #4facfe;
+}
+
+body.dark-mode .admin-panel {
+  background-color: #1e1e1e;
+}
+
+body.dark-mode .card-button {
+  background-color: #2b2b2b;
+  border: 1px solid #444;
+  color: #eee;
+}
+
+body.dark-mode .card-button:hover {
+  background-color: #444;
+}
+
+body.dark-mode .logout {
+  color: #90cdf4;
+}

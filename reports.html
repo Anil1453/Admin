@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Reports</title>
+  <link rel="stylesheet" href="reports.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+   <video autoplay muted loop playsinline id="bg-video">
+  <source id="bg-source" src="whitebackground.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+  <div class="reports-container">
+    <h2>📊 Reports & Analytics</h2>
+
+    <div class="summary-cards">
+      <div class="card">
+        <h3>👥 Top Users</h3>
+        <p id="top-users">Loading...</p>
+      </div>
+      <div class="card">
+        <h3>🔐 Total Logins</h3>
+        <p id="total-logins">Loading...</p>
+      </div>
+      <div class="card">
+        <h3>🕒 System Uptime</h3>
+        <p>99.97%</p>
+      </div>
+    </div>
+
+    <div class="activity-section">
+      <h4>Recent Activity Logs</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>User</th>
+            <th>Action</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody id="activity-table-body">
+          <!-- Dinamik log verileri buraya gelecek -->
+        </tbody>
+      </table>
+    </div>
+
+    <a href="admin.html" class="back-button" title="Back">
+  ←
+</a>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const savedTheme = localStorage.getItem('theme') || 'light';
+      if (savedTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+      }
+
+      const logs = JSON.parse(localStorage.getItem('activityLogs')) || [];
+
+      // Tabloda göster
+      const tableBody = document.getElementById('activity-table-body');
+      tableBody.innerHTML = '';
+
+      logs.forEach(log => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${log.user}</td>
+          <td>${log.action}</td>
+          <td>${new Date(log.date).toLocaleString()}</td>
+        `;
+        tableBody.appendChild(tr);
+      });
+
+      // Total logins (sadece "login" türündekileri say)
+      const totalLogins = logs.filter(log => log.type === "login").length;
+      document.getElementById('total-logins').textContent = `${totalLogins} this month`;
+
+      // Top Users (en çok işlem yapan ilk 3 kullanıcı)
+      const userCounts = {};
+      logs.forEach(log => {
+        if (!userCounts[log.user]) userCounts[log.user] = 0;
+        userCounts[log.user]++;
+      });
+
+      const topUsers = Object.entries(userCounts)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 3)
+        .map(([user]) => user);
+
+      document.getElementById('top-users').textContent = topUsers.length
+        ? topUsers.join(', ')
+        : "No activity yet.";
+    });
+  </script>
+     <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    const bgSource = document.getElementById('bg-source');
+
+    if (savedTheme === 'dark') {
+      document.body.classList.add('dark-mode');
+      bgSource.src = 'blackbackground.mp4';
+    } else {
+      document.body.classList.remove('dark-mode');
+      bgSource.src = 'whitebackground.mp4';
+    }
+
+    // Kaynağı değiştirdikten sonra yeniden yükle
+    const bgVideo = document.getElementById('bg-video');
+    bgVideo.load();
+  });
+</script>
+</body>
+</html>

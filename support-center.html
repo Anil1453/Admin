@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Support Center</title>
+  <link rel="stylesheet" href="support-center.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+   <video autoplay muted loop playsinline id="bg-video">
+  <source id="bg-source" src="whitebackground.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+  <div class="container">
+    <h2>🎧 Support Center</h2>
+
+    <div class="ticket-filters">
+      <label for="statusFilter">Filter by status:</label>
+      <select id="statusFilter">
+        <option value="all">All</option>
+        <option value="open">Open</option>
+        <option value="in-progress">In Progress</option>
+        <option value="resolved">Resolved</option>
+      </select>
+    </div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    if (savedTheme === 'dark') {
+      document.body.classList.add('dark-mode');
+    } else {
+      document.body.classList.remove('dark-mode');
+    }
+
+    const statusFilter = document.getElementById('statusFilter');
+    const tickets = document.querySelectorAll('.ticket');
+
+    function filterTickets() {
+      const filterValue = statusFilter.value;
+      tickets.forEach(ticket => {
+        if (filterValue === 'all' || ticket.classList.contains(filterValue)) {
+          ticket.style.display = 'block';
+        } else {
+          ticket.style.display = 'none';
+        }
+      });
+    }
+
+    filterTickets();
+    statusFilter.addEventListener('change', filterTickets);
+  });
+</script>
+
+    <div class="tickets">
+      <div class="ticket open">
+        <h3>Login Issue</h3>
+        <p><strong>User:</strong> jane_doe</p>
+        <p>“I'm unable to log into my account since this morning.”</p>
+        <span class="status">Status: Open</span>
+      </div>
+
+      <div class="ticket in-progress">
+        <h3>Payment Not Reflected</h3>
+        <p><strong>User:</strong> david123</p>
+        <p>“I made a payment but it doesn't show in my history.”</p>
+        <span class="status">Status: In Progress</span>
+      </div>
+
+      <div class="ticket resolved">
+        <h3>Change Email Request</h3>
+        <p><strong>User:</strong> maria_x</p>
+        <p>“Please update my email address to maria@example.com.”</p>
+        <span class="status">Status: Resolved</span>
+      </div>
+    </div>
+
+    <div class="bottom-buttons">
+   <a href="admin.html" class="back-button" title="Back">
+  ←
+</a>
+    </div>
+  </div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    if (savedTheme === 'dark') {
+      document.body.classList.add('dark-mode');
+    } else {
+      document.body.classList.remove('dark-mode');
+    }
+  });
+</script>
+   <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    const bgSource = document.getElementById('bg-source');
+
+    if (savedTheme === 'dark') {
+      document.body.classList.add('dark-mode');
+      bgSource.src = 'blackbackground.mp4';
+    } else {
+      document.body.classList.remove('dark-mode');
+      bgSource.src = 'whitebackground.mp4';
+    }
+
+    // Kaynağı değiştirdikten sonra yeniden yükle
+    const bgVideo = document.getElementById('bg-video');
+    bgVideo.load();
+  });
+</script>
+</body>
+</html>

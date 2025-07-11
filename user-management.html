@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>User Management</title>
+  <link rel="stylesheet" href="user-management.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+   <video autoplay muted loop playsinline id="bg-video">
+  <source id="bg-source" src="whitebackground.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+  <div class="container">
+    <header>
+      <h2>👥 User Management</h2>
+      <input type="text" placeholder="Search user..." class="search-bar" />
+    </header>
+
+    <section class="user-grid">
+      <!-- Kullanıcı kartları buraya eklenecek -->
+    </section>
+
+<a href="admin.html" class="back-button" title="Back">
+  ←
+</a>
+  </div>
+
+  <script src="user-management.js"></script>
+  <script>
+  // Sayfa yüklendiğinde çalışacak küçük kod
+  document.addEventListener('DOMContentLoaded', () => {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+      document.body.classList.add('dark-mode');
+    }
+  });
+</script>
+   <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    const bgSource = document.getElementById('bg-source');
+
+    if (savedTheme === 'dark') {
+      document.body.classList.add('dark-mode');
+      bgSource.src = 'blackbackground.mp4';
+    } else {
+      document.body.classList.remove('dark-mode');
+      bgSource.src = 'whitebackground.mp4';
+    }
+
+    // Kaynağı değiştirdikten sonra yeniden yükle
+    const bgVideo = document.getElementById('bg-video');
+    bgVideo.load();
+  });
+</script>
+</body>
+</html>

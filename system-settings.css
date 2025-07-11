@@ -1,0 +1,150 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+#bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+  pointer-events: none;
+}
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: #4facfe;
+  color: white;
+  font-size: 20px;
+  border-radius: 50%;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.back-button:hover {
+  background-color: #3a9de2;
+}
+
+body.dark-mode {
+  background: #121212;
+  color: #e0e0e0;
+}
+
+.container {
+  max-width: 500px;
+  margin: 60px auto;
+  padding: 35px 40px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode .container {
+  background: #1e1e1e;
+  color: #e0e0e0;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 40px;
+  font-weight: 600;
+}
+
+.settings-form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #555;
+}
+
+select {
+  padding: 12px 15px;
+  border-radius: 10px;
+  border: 1.5px solid #ccc;
+  font-size: 16px;
+  background: white;
+  color: #333;
+  transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+}
+
+body.dark-mode select {
+  background: #2a2a2a;
+  color: #e0e0e0;
+  border-color: #666;
+}
+
+select:focus {
+  border-color: #6366f1;
+  outline: none;
+  box-shadow: 0 0 6px #6366f1aa;
+}
+
+.save-btn {
+  margin-top: 40px;
+  padding: 15px 0;
+  background: linear-gradient(90deg, #6366f1, #4f46e5);
+  border: none;
+  border-radius: 14px;
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 6px 12px rgba(99, 102, 241, 0.5);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.save-btn:hover {
+  background: linear-gradient(90deg, #4f46e5, #4338ca);
+  box-shadow: 0 8px 20px rgba(79, 70, 229, 0.7);
+}
+
+.back-link {
+  display: block;
+  margin-top: 35px;
+  text-align: center;
+  font-weight: 500;
+  color: #6366f1;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+
+.back-link:hover {
+  color: #4f46e5;
+  text-decoration: underline;
+}
+
+body.dark-mode {
+  background-color: #121212;
+  color: #eee;
+}
+body.dark-mode .back-button {
+  background-color: #2563eb;
+  color: #f0f0f0;
+}
+
+body.dark-mode .back-button:hover {
+  background-color: #1e40af;
+}
